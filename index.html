@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style type="text/css">
+        * {
+            font-family: 微软雅黑;
+            padding: 0px;
+            margin: 0px;
+        }
+
+        #imd {
+            width: 400px;
+            height: 400px;
+            position: absolute;
+            left: 0px;
+            top: 0px;
+            border: 1px solid red;
+            overflow: hidden;
+
+        }
+
+        img {
+            display: block;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <div id='imd'><object data="honehone.swf"></object>
+    </div>
+
+    <script>
+        // 3 3 上下弹球特效
+        cobj = document.getElementById('imd');
+        seegao = document.documentElement.clientHeight; //可见高网页
+        see2gao = document.documentElement.clientWidth;
+        imdgao = cobj.offsetHeight;
+        chazhi = seegao - imdgao;
+        cha2zhi = see2gao - imdgao;
+        ys = 0;
+        yv = 10;
+        xs = 0;
+        xv = 10;
+        setInterval(function () {
+            ys += yv;
+            if (ys >= chazhi) {
+                ys = chazhi;
+                yv = -yv;
+            }
+            if (ys <= 0) {
+                yv = -yv;
+            }
+            document.title = ys + '-' + seegao;
+
+            cobj.style.top = ys + 'px';
+
+        }, 100);
+        setInterval(function () {
+            xs += xv;
+            if (xs >= cha2zhi) {
+                xs = cha2zhi;
+                xv = -xv;
+            }
+            if (xs <= 0) {
+                xv = -xv;
+            }
+            document.title = xs + '-' + see2gao;
+
+            cobj.style.left = xs + 'px';
+
+        }, 10000);
+    </script>
+</body>
+
+
+</html>
